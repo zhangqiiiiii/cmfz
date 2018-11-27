@@ -11,6 +11,34 @@
     <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript">
         <!--菜单处理-->
+        $(function () {
+            //菜单
+            $.ajax({
+                url: "${pageContext.request.contextPath}/selectAll",
+                type: "post",
+                success: function (data) {
+                    console.log(data)
+                    var data = data.list;
+                    for (var i = 0; i < data.length; i++) {
+                        var t = "";
+                        for (var j = 0; j < data[i].menulist.length; j++) {
+                            alert(data[i])
+                            t += data[i].menulist[j].title;
+                            t += "</br>";
+                        }
+                        //添加一个新面板。在默认情况下，新增的面板会变成当前面板。
+                        // 如果要添加一个非选中面板，不要忘记将'selected'属性设置为false
+                        alert(11111)
+                        $("#aa").accordion("add", {
+                            title: data[i].title,
+                            content: t,
+                            selected: false
+                        });
+                    }
+                }
+
+            });
+        });
     </script>
 
 </head>
