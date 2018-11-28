@@ -9,20 +9,22 @@
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../js/datagrid-detailview.js"></script>
+    <script type="text/javascript" src="../js/jquery.edatagrid.js"></script>
     <script type="text/javascript">
         <!--菜单处理-->
-        $(function () {
             //菜单
             $.ajax({
                 url: "${pageContext.request.contextPath}/selectAll",
                 type: "post",
                 success: function (data) {
+
                     var data = data.list;
                     for (var i = 0; i < data.length; i++) {
                         var t = "";
                         for (var j = 0; j < data[i].menulist.length; j++) {
                             //alert(data[i])
-                            t += data[i].menulist[j].title;
+                            t += "<p style='text-align: center'><a id=\"btn\" href=\"#\" class=\"easyui-linkbutton\" onclick=\"addTabs('" + data[i].menulist[j].title + "','" + data[i].menulist[j].url + "','" + data[i].menulist[j].iconCls + "')\" data-options=\"iconCls:'icon-search'\">" + data[i].menulist[j].title + "</a></p>";
                             t += "</br>";
                         }
                         //添加一个新面板。在默认情况下，新增的面板会变成当前面板。
@@ -37,7 +39,22 @@
                 }
 
             });
-        });
+
+        function addTabs(title, url, iconCls) {
+            var flag = $("#tt").tabs("exists", title);
+            if (flag) {
+                $("#tt").tabs("select", title);
+            } else {
+                /*添加选项卡*/
+                $('#tt').tabs('add', {
+                    title: title,
+                    selected: true,
+                    href: "${pageContext.request.contextPath}" + url,
+                    iconCls: iconCls,
+                    closable: true
+                });
+            }
+        }
     </script>
 
 </head>
