@@ -20,7 +20,8 @@ public class AdminController {
         System.out.println("登录测试" + a);
         String sessionkaptcha = (String) session.getAttribute("kaptcha");
         if (a != null && sessionkaptcha.equalsIgnoreCase(number)) {
-            map.put("admin", a);
+            //map.put("admin", a);
+            session.setAttribute("admin", a);
             return "redirect:main/main.jsp";
         } else {
             return "login";

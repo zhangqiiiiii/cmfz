@@ -17,18 +17,17 @@
                 url: "${pageContext.request.contextPath}/selectAll",
                 type: "post",
                 success: function (data) {
-                    console.log(data)
                     var data = data.list;
                     for (var i = 0; i < data.length; i++) {
                         var t = "";
                         for (var j = 0; j < data[i].menulist.length; j++) {
-                            alert(data[i])
+                            //alert(data[i])
                             t += data[i].menulist[j].title;
                             t += "</br>";
                         }
                         //添加一个新面板。在默认情况下，新增的面板会变成当前面板。
                         // 如果要添加一个非选中面板，不要忘记将'selected'属性设置为false
-                        alert(11111)
+                        // alert(11111)
                         $("#aa").accordion("add", {
                             title: data[i].title,
                             content: t,
@@ -47,10 +46,10 @@
     <div style="font-size: 24px;color: #FAF7F7;font-family: 楷体;font-weight: 900;width: 500px;float:left;padding-left: 20px;padding-top: 10px">
         持名法州后台管理系统
     </div>
-    <div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">欢迎您:xxxxx
-        &nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a>&nbsp;&nbsp;<a href="#"
-                                                                                                              class="easyui-linkbutton"
-                                                                                                              data-options="iconCls:'icon-01'">退出系统</a>
+    <div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">
+        欢迎您:${admin.name}
+        &nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a>&nbsp;&nbsp;
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-01'">退出系统</a>
     </div>
 </div>
 <div data-options="region:'south',split:true" style="height: 40px;background: #5C160C">
