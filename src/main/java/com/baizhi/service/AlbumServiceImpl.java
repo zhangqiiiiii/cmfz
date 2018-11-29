@@ -1,6 +1,7 @@
 package com.baizhi.service;
 
 import com.baizhi.dao.AlbumDao;
+import com.baizhi.entity.Album;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,4 +24,11 @@ public class AlbumServiceImpl implements AlbumService {
         map.put("total", count);
         return map;
     }
+
+    @Override
+    public void add(Album album) {
+        ad.add(album);
+    }
+
+
 }

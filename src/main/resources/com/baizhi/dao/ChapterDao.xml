@@ -10,5 +10,8 @@
         <result column="uploadDate" property="uploadDate" jdbcType="DATE"/>
         <result column="aid" property="aid" jdbcType="INTEGER"/>
     </resultMap>
+    <insert id="add">
+        insert into chapter values (0,#{title},#{size},#{duration},#{downPath},SYSDATE(),#{aid})
+    </insert>
 
 </mapper>

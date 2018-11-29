@@ -31,4 +31,8 @@
     select count(*) from album
 
   </select>
+
+    <insert id="add">
+        insert into album values(0,#{title},#{coverImg},#{count},#{score},#{author},#{broadCast},#{brief},SYSDATE())
+    </insert>
 </mapper>

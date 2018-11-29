@@ -1,9 +1,10 @@
-package com.baizhi.dao;
+package com.baizhi.service;
 
 import com.baizhi.entity.Chapter;
 
-public interface ChapterDao {
-    //添加章节
+public interface ChapterService {
+
     public void add(Chapter chapter);
+
 
 }

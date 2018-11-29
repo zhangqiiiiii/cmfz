@@ -1,13 +1,17 @@
 package com.baizhi.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Chapter implements Serializable {
     private Integer id;
 
@@ -25,17 +29,4 @@ public class Chapter implements Serializable {
 
     private Integer aid;
 
-    public Chapter() {
-        super();
-    }
-
-    public Chapter(Integer id, String title, String size, String duration, String downPath, Date uploadDate, Integer aid) {
-        this.id = id;
-        this.title = title;
-        this.size = size;
-        this.duration = duration;
-        this.downPath = downPath;
-        this.uploadDate = uploadDate;
-        this.aid = aid;
-    }
 }

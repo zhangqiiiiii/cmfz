@@ -9,4 +9,6 @@ public interface AlbumDao {
     public List<Album> selectAll(@Param("start") int start, @Param("rows") int rows);
 
     public int count();
+
+    public void add(Album album);
 }
