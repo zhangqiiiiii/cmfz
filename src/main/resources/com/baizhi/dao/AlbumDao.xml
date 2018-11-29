@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.AlbumDao">
+    <resultMap id="BaseResultMap" type="Album">
+        <id column="a_id" property="id" jdbcType="INTEGER"/>
+        <result column="a_title" property="title" jdbcType="VARCHAR"/>
+        <result column="coverImg" property="coverimg" jdbcType="VARCHAR"/>
+        <result column="count" property="count" jdbcType="INTEGER"/>
+        <result column="score" property="score" jdbcType="VARCHAR"/>
+        <result column="a_author" property="author" jdbcType="VARCHAR"/>
+        <result column="broadCast" property="broadCast" jdbcType="VARCHAR"/>
+        <result column="a_brief" property="brief" jdbcType="VARCHAR"/>
+        <result column="publishDate" property="publishDate" jdbcType="TIMESTAMP"/>
+        <collection property="children" ofType="Chapter">
+            <id column="id" property="id" jdbcType="INTEGER"/>
+            <result column="title" property="title" jdbcType="VARCHAR"/>
+            <result column="size" property="size" jdbcType="VARCHAR"/>
+            <result column="duration" property="duration" jdbcType="VARCHAR"/>
+            <result column="downPath" property="downPath" jdbcType="VARCHAR"/>
+            <result column="uploadDate" property="uploadDate" jdbcType="DATE"/>
+            <result column="aid" property="aid" jdbcType="INTEGER"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+    select a.id a_id,a.title a_title,a.author a_author,a.brief a_brief,c.* from album a left JOIN chapter c on a.id = c.aid limit #{start},#{rows}
+
+  </select>
+
+    <select id="count" resultType="int">
+    select count(*) from album
+
+  </select>
+</mapper>

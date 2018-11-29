@@ -144,7 +144,6 @@
         });
 
     })
-
 </script>
 <table id="dg"></table>
 <div id="add">
