@@ -59,6 +59,10 @@
     /*构建数据表格*/
     $(function () {
         $('#chapter_tg').treegrid({
+            onDblClickRow: function (row) {
+                $("#audio").dialog("open")
+                $("#audio_id").prop("src", "${pageContext.request.contextPath}/upload/" + row.downPath)
+            },
             url: "${pageContext.request.contextPath}/Album_selectAll",
             // method: "get",
             idField: 'id',
