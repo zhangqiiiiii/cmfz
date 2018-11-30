@@ -59,6 +59,7 @@
     /*构建数据表格*/
     $(function () {
         $('#chapter_tg').treegrid({
+            //点击播放
             onDblClickRow: function (row) {
                 $("#audio").dialog("open")
                 $("#audio_id").prop("src", "${pageContext.request.contextPath}/upload/" + row.downPath)
@@ -107,6 +108,7 @@
             buttons: [{
                 text: '保存',
                 handler: function () {
+                    //调用添加章节的方法  执行添加章节方法
                     addChapter();
 
 

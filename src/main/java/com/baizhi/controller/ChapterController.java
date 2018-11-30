@@ -42,9 +42,7 @@ public class ChapterController {
         if (!file.exists()) {
             file.mkdir();
         }
-
-        //测试音乐.MP3   11111111.MP3
-        //获取文件的名字
+        //获取文件的名字  是后缀
         String extension = FilenameUtils.getExtension(wenjian.getOriginalFilename());
         System.out.println("老名字" + extension);
         UUID uuid = UUID.randomUUID();
@@ -93,9 +91,11 @@ public class ChapterController {
         String uploadPath = request.getSession().getServletContext().getRealPath("upload");  //webapp当前项目的路径
         String path = uploadPath + "/" + downPath;
         File file = new File(path);
-        String s = title + "." + "mp3";
-
-        System.out.println(downPath);
+        //获取地址的后缀
+        String hz = downPath.substring(downPath.lastIndexOf("."));
+        System.out.println("打印后缀" + hz);
+        String s = title + hz;
+        System.out.println("打印uuid的名字" + s);
         System.out.println(title);
         try {
             response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(s, "utf-8"));
